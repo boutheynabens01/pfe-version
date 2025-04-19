@@ -17,11 +17,11 @@
             <fieldset>
                 <legend><?= __('Add Animal') ?></legend>
                 <?php
-                    echo $this->Form->control('type');
                     echo $this->Form->control('name');
+                    echo $this->Form->control('type');
                     echo $this->Form->control('age');
-                    echo $this->Form->control('healthrecord');
-                    echo $this->Form->control('picture');
+                    echo $this->Form->control('health_record');
+                    echo $this->Form->control('photo');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

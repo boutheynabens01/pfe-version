@@ -9,11 +9,13 @@ use Cake\ORM\Entity;
  * Animal Entity
  *
  * @property int $id
- * @property string $type
- * @property string $name
+ * @property string|null $name
+ * @property string|null $type
  * @property int|null $age
- * @property string|null $healthrecord
- * @property string|null $picture
+ * @property string|null $health_record
+ * @property string|null $photo
+ *
+ * @property \PetCare\Model\Entity\Announcement[] $announcements
  */
 class Animal extends Entity
 {
@@ -27,10 +29,11 @@ class Animal extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'type' => true,
         'name' => true,
+        'type' => true,
         'age' => true,
-        'healthrecord' => true,
-        'picture' => true,
+        'health_record' => true,
+        'photo' => true,
+        'announcements' => true,
     ];
 }

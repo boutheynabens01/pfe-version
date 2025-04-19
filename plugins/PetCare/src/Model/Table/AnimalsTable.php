@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Animals Model
  *
+ * @property \PetCare\Model\Table\AnnouncementsTable&\Cake\ORM\Association\HasMany $Announcements
+ *
  * @method \PetCare\Model\Entity\Animal newEmptyEntity()
  * @method \PetCare\Model\Entity\Animal newEntity(array $data, array $options = [])
  * @method array<\PetCare\Model\Entity\Animal> newEntities(array $data, array $options = [])
@@ -40,6 +42,11 @@ class AnimalsTable extends Table
         $this->setTable('animals');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('Announcements', [
+            'foreignKey' => 'animal_id',
+            'className' => 'PetCare.Announcements',
+        ]);
     }
 
     /**
@@ -51,30 +58,27 @@ class AnimalsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('type')
-            ->maxLength('type', 100)
-            ->requirePresence('type', 'create')
-            ->notEmptyString('type');
-
-        $validator
             ->scalar('name')
             ->maxLength('name', 255)
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
+            ->allowEmptyString('name');
+
+        $validator
+            ->scalar('type')
+            ->maxLength('type', 255)
+            ->allowEmptyString('type');
 
         $validator
             ->integer('age')
             ->allowEmptyString('age');
 
         $validator
-            ->scalar('healthrecord')
-            ->maxLength('healthrecord', 255)
-            ->allowEmptyString('healthrecord');
+            ->scalar('health_record')
+            ->allowEmptyString('health_record');
 
         $validator
-            ->scalar('picture')
-            ->maxLength('picture', 255)
-            ->allowEmptyString('picture');
+            ->scalar('photo')
+            ->maxLength('photo', 255)
+            ->allowEmptyString('photo');
 
         return $validator;
     }

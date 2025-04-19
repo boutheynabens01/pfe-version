@@ -25,6 +25,7 @@ class AnimalsTableTest extends TestCase
      */
     protected array $fixtures = [
         'plugin.PetCare.Animals',
+        'plugin.PetCare.Announcements',
     ];
 
     /**

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PetCare\Controller;
 
-use PetCare\Controller\AppController;
+use App\Controller\AppController;
 
 /**
  * Animals Controller
@@ -34,7 +34,7 @@ class AnimalsController extends AppController
      */
     public function view($id = null)
     {
-        $animal = $this->Animals->get($id, contain: []);
+        $animal = $this->Animals->get($id, contain: ['Announcements']);
         $this->set(compact('animal'));
     }
 
